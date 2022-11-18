@@ -27,12 +27,15 @@ struct SettingsView: View {
                     if latestVersion! != version && !FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
                         Button("Download Update to \(latestVersion!)", action: {action.downloadUpdate(UseDev: dev)})
                     }
-                    if FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
+                    else if FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/weedra1n.ipa") {
                         let tsUrl = URL(string: "apple-magnifier://install?url=file:///var/mobile/Documents/weedra1n/weedra1n.ipa")!
                         Button("Install") {
                             openURL(tsUrl)
                         }
                     }
+                    else {
+                        Button("No update available", action: respring)
+                            .disabled(true)
                 }
                 Section(header: Text("SETTINGS")) {
                     Toggle("Enable Verbose", isOn: $action.verbose)
