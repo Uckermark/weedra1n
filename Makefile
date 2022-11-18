@@ -5,9 +5,11 @@ WR_STAGE_DIR = $(WRTMP)/stage
 WR_APP_DIR 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1n.app
 WR_HELPER_PATH 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1nHelper
 GIT_REV=$(shell git rev-parse --short HEAD)
+GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 
 package:
 	/usr/libexec/PlistBuddy -c "Set :REVISION ${GIT_REV}" "weedra1n/Info.plist"
+	/usr/libexec/PlistBuddy -c "Set :BRANCH ${GIT_BRANCH}" "weedra1n/Info.plist"
 
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme weedra1n -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(WRTMP) \
