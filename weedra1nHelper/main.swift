@@ -153,10 +153,10 @@ struct Strap: ParsableCommand {
             }
             let url: URL
             if dev {
-                url = URL(string: "https://nightly.link/Uckermark/weedra1n/workflows/devbuild/dev/weedra1n.zip")
+                url = URL(string: "https://nightly.link/Uckermark/weedra1n/workflows/devbuild/dev/weedra1n.zip")!
             } else {
                 url = URL(string:
-"https://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip")
+"https://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip")!
             }
             FileDownloader.loadFileSync(url: url!) { (path, error) in
                 NSLog("[*] Downloaded to path \(path!)")
