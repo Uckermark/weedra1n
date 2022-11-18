@@ -151,10 +151,11 @@ struct Strap: ParsableCommand {
                     NSLog("[*] Could not create working directory: \(error.localizedDescription)")
                 }
             }
+            let url: URL
             if dev {
-                let url = URL(string: "https://nightly.link/Uckermark/weedra1n/workflows/devbuild/dev/weedra1n.zip")
+                url = URL(string: "https://nightly.link/Uckermark/weedra1n/workflows/devbuild/dev/weedra1n.zip")
             } else {
-                let url = URL(string:
+                url = URL(string:
 "https://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip")
             }
             FileDownloader.loadFileSync(url: url!) { (path, error) in
