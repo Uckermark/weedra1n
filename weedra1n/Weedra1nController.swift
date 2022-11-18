@@ -235,18 +235,18 @@ public class Actions: ObservableObject {
     }
     
     func runPatch() {
-        guard let url = Bundle.main.url(forResource: "patch", withExtension: ".sh")?.absoluteString else {
+        guard let url = Bundle.main.url(forResource: "update", withExtension: ".sh")?.absoluteString else {
             addToLog(msg: "[*] Could not find patch")
             return
         }
         let path = url.replacingOccurrences(of: "file://", with: "")
         DispatchQueue.main.async { [self] in
-            addToLog(msg: "[*] Patching Bootstrap")
+            addToLog(msg: "[*] Upgrading packages")
         }
         let ret = spawn(command: "/var/jb/usr/bin/sh", args: [path], root: true)
         DispatchQueue.main.async { [self] in
             if ret.0 != 0 {
-                addToLog(msg: "[*] Failed to run script")
+                addToLog(msg: "[*] Failed to upgrade packages")
                 vLog(msg: ret.1)
                 vLog(msg: "script path: " + path)
                 return
