@@ -36,6 +36,7 @@ struct SettingsView: View {
                     else {
                         Button("No update available", action: respring)
                             .disabled(true)
+                    }
                 }
                 Section(header: Text("SETTINGS")) {
                     Toggle("Enable Verbose", isOn: $action.verbose)
