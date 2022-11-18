@@ -13,6 +13,7 @@ struct SettingsView: View {
     @State var rootless: Bool = true
     @State var dev: Bool = false
     private let gitCommit = Bundle.main.infoDictionary?["REVISION"] as? String ?? "unknown"
+    private let gitBranch = Bundle.main.infoDictionary?["BRANCH"] as? String ?? "unknown"
     private let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "unknown"
     private var latestVersion: String?
     init(act: Actions) {
@@ -54,7 +55,7 @@ struct SettingsView: View {
             }
             Spacer()
             HStack {
-                Text("v\(version) (\(gitCommit))")
+                Text("v\(version) (\(gitBranch), \(gitCommit))")
                 Spacer()
             }
             Divider()
