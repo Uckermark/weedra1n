@@ -235,8 +235,8 @@ public class Actions: ObservableObject {
     }
     
     func runPatch() {
-        guard let url = Bundle.main.url(forResource: "update", withExtension: ".sh")?.absoluteString else {
-            addToLog(msg: "[*] Could not find patch")
+        guard let url = Bundle.main.url(forResource: "patch", withExtension: ".sh")?.absoluteString else {
+            addToLog(msg: "[*] Could not find update script")
             return
         }
         let path = url.replacingOccurrences(of: "file://", with: "")
