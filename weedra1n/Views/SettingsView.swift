@@ -54,6 +54,7 @@ struct SettingsView: View {
                         let ret0 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Xcode Previews.app"], root: true)
                         let ret1 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Sidecar.app"], root: true)
                         action.addToLog(msg: ret0.1 + ret1.1)
+                    }
                     Button("Restore RootFS", action: action.Remove)
                 }
             }
