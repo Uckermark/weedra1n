@@ -53,7 +53,8 @@ struct SettingsView: View {
                     Button("Remove Sidecar & Xcode Previews") {
                         let ret0 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Xcode Previews.app"], root: true)
                         let ret1 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Sidecar.app"], root: true)
-                        action.addToLog(msg: ret0.1 + ret1.1)
+                        action.vLog(msg: ret0.1 + ret1.1)
+                        action.addToLog(msg: "[*] Removed Sidecar & Xcode Previews from springboard")
                     }
                     Button("Restore RootFS", action: action.Remove)
                 }
