@@ -1,6 +1,6 @@
 //
-//  PogoApp.swift
-//  Pogo
+//  weedra1nApp.swift
+//  weedra1n
 //
 //  Created by Uckermark on 16.10.22.
 //

@@ -92,6 +92,7 @@ public class Actions: ObservableObject {
                                         }
                                         DispatchQueue.global(qos: .utility).async {
                                             self.runPatch()
+                                            self.hideSystemApps()
                                             DispatchQueue.main.async {
                                                 self.addToLog(msg: "Successfully installed Procursus and Sileo")
                                                 self.isWorking = false
@@ -226,30 +227,8 @@ public class Actions: ObservableObject {
     }
     
     func addToLog(msg: String) {
-        NSLog(msg)
         log = log + "\n" + "[*] " + msg
-        updateStatus(text: msg)
-    }
-    
-    func updateStatus(text: String) {
-        status = status + text + "\n"
-        let ns = status as NSString
-        var lines = 0
-        ns.enumerateLines { (str, _) in
-            lines += 1
-        }
-        if (lines > 1) {
-            var rlog = ""
-            var isFirst = true
-            ns.enumerateLines { (str, _) in
-                if (isFirst) {
-                    isFirst = false
-                } else {
-                    rlog = rlog + str + "\n"
-                }
-            }
-            status = rlog
-        }
+        status = msg
     }
     
     func vLog(msg: String) {
