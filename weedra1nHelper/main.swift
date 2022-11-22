@@ -192,7 +192,7 @@ struct Strap: ParsableCommand {
             let docPath = "/var/mobile/Documents/weedra1n/"
             let updateFiles = ["\(docPath)weedra1n.ipa", "\(docPath)weedra1n.zip"]
             for file in updateFiles {
-                try? FileManager().removeItem(atPath: updateFiles)
+                try? FileManager().removeItem(atPath: file)
             }
         }
     }
