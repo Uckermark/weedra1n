@@ -4,7 +4,7 @@ WRTMP = $(TMPDIR)/pogo
 WR_STAGE_DIR = $(WRTMP)/stage
 WR_APP_DIR 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1n.app
 WR_HELPER_PATH 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1nHelper
-BS_HELPER_PATH 	= $(WRTMP)/Build/Products/Release-iphoneos/bootstrapHelper
+BS_HELPER_PATH 	= $(WRTMP)/Build/Products/Release-iphoneos/bootstrapHelper.
 GIT_REV=$(shell git rev-parse --short HEAD)
 GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 
