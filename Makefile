@@ -35,7 +35,7 @@ package:
 	@ls $(WR_HELPER_PATH)
 	@ls $(WR_STAGE_DIR)
 	@mv $(WR_HELPER_PATH) $(WR_STAGE_DIR)/Payload/weedra1n.app/weedra1nHelper
-        @mv $(BS_HELPER_PATH) $(WR_STAGE_DIR)/Payload/weedra1n.app/bootstrapHelper
+	@mv $(BS_HELPER_PATH) $(WR_STAGE_DIR)/Payload/weedra1n.app/bootstrapHelper
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app/
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app//weedra1nHelper
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app//bootstrapHelper
