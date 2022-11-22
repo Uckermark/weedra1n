@@ -10,7 +10,7 @@ import SwiftUI
 
 
 public class Actions: ObservableObject {
-    private var isWorking: Bool
+    @Published var isWorking: Bool
     @Published var log: String
     @Published var status: String
     @Published var verbose: Bool

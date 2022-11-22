@@ -13,9 +13,18 @@ struct JailbreakView: View {
     var body: some View {
         VStack {
             Spacer()
-            if !FileManager().fileExists(atPath: "/var/jb/.procursus_strapped") {
-                Button("Jailbreak", action: action.Install)
+            if action.isWorking {
+                Button("Jailbreaking...") {
+                    action.addToLog(msg: "weedInstaller is busy")
+                }
                     .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .disabled(true)
+            } else if !FileManager().fileExists(atPath: "/var/jb/.procursus_strapped") {
+                    Button("Jailbreak", action: action.Install)
+                        .padding()
                     .foregroundColor(.white)
                     .background(Color.blue)
                     .cornerRadius(10)
