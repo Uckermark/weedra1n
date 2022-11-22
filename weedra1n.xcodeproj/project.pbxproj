@@ -16,6 +16,8 @@
 		0A5DD08F291EEE7E007F6ED7 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = 0A5DD08E291EEE7E007F6ED7 /* SWCompression */; };
 		0A5DD0A02920647F007F6ED7 /* TSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DD09F2920647F007F6ED7 /* TSUtil.m */; };
 		0AB50DE3291586660033E990 /* patch.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AB50DE2291586660033E990 /* patch.sh */; };
+		0AC2F1BC292D5C64003A2DE8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2F1BB292D5C64003A2DE8 /* main.swift */; };
+		0AC2F1C2292D713A003A2DE8 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 0AC2F1C1292D713A003A2DE8 /* ArgumentParser */; };
 		E131378F28CFA16B00754132 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E131378E28CFA16B00754132 /* main.swift */; };
 		E131379D28CFB9B100754132 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = E131379C28CFB9B100754132 /* ArgumentParser */; };
 		E17927D828D247B2009D8F83 /* SWCompression in Frameworks */ = {isa = PBXBuildFile; productRef = E17927D728D247B2009D8F83 /* SWCompression */; };
@@ -26,6 +28,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0AC2F1B7292D5C63003A2DE8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E131378528CFA0BC00754132 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,8 +59,10 @@
 		0A5DD09E2920647F007F6ED7 /* CoreServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServices.h; sourceTree = "<group>"; };
 		0A5DD09F2920647F007F6ED7 /* TSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSUtil.m; sourceTree = "<group>"; };
 		0AB50DE2291586660033E990 /* patch.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = patch.sh; sourceTree = "<group>"; };
-		0AC2F1AE2926EECD003A2DE8 /* weedra1n.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedra1n.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0AC2F1AF2926EECD003A2DE8 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = weedra1nHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AC2F1AE2926EECD003A2DE8 /* weedra1n.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = weedra1n.app; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/weedra1n.app"; sourceTree = "<absolute>"; };
+		0AC2F1AF2926EECD003A2DE8 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = weedra1nHelper; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/weedra1nHelper"; sourceTree = "<absolute>"; };
+		0AC2F1BB292D5C64003A2DE8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		0AC2F1C4292D77DE003A2DE8 /* libbootstrapHelper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libbootstrapHelper.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E131378228CF9C1B00754132 /* weedra1n-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weedra1n-BridgingHeader.h"; sourceTree = "<group>"; };
 		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E17927D928D24DB6009D8F83 /* org.coolstar.sileo_2.4_iphoneos-arm64.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "org.coolstar.sileo_2.4_iphoneos-arm64.deb"; sourceTree = "<group>"; };
@@ -60,6 +73,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0AC2F1B6292D5C63003A2DE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AC2F1C2292D713A003A2DE8 /* ArgumentParser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E131378428CFA0BC00754132 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -102,6 +123,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		0AC2F1BA292D5C64003A2DE8 /* bootstrapHelper */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2F1BB292D5C64003A2DE8 /* main.swift */,
+			);
+			path = bootstrapHelper;
+			sourceTree = "<group>";
+		};
 		E131378128CF9B8800754132 /* Required */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,8 +154,8 @@
 			children = (
 				E181BAD828CF914300CD25A6 /* weedra1n */,
 				E131378828CFA0BC00754132 /* weedra1nHelper */,
-				0AC2F1AE2926EECD003A2DE8 /* weedra1n.app */,
-				0AC2F1AF2926EECD003A2DE8 /* weedra1nHelper */,
+				0AC2F1BA292D5C64003A2DE8 /* bootstrapHelper */,
+				0AC2F1C4292D77DE003A2DE8 /* libbootstrapHelper.a */,
 			);
 			sourceTree = "<group>";
 		};
@@ -148,6 +177,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0AC2F1B8292D5C63003A2DE8 /* bootstrapHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0AC2F1BD292D5C64003A2DE8 /* Build configuration list for PBXNativeTarget "bootstrapHelper" */;
+			buildPhases = (
+				0AC2F1B5292D5C63003A2DE8 /* Sources */,
+				0AC2F1B6292D5C63003A2DE8 /* Frameworks */,
+				0AC2F1B7292D5C63003A2DE8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bootstrapHelper;
+			packageProductDependencies = (
+				0AC2F1C1292D713A003A2DE8 /* ArgumentParser */,
+			);
+			productName = bootstrapHelper;
+			productReference = 0AC2F1C4292D77DE003A2DE8 /* libbootstrapHelper.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		E131378628CFA0BC00754132 /* weedra1nHelper */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E131378B28CFA0BC00754132 /* Build configuration list for PBXNativeTarget "weedra1nHelper" */;
@@ -199,6 +248,9 @@
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
+					0AC2F1B8292D5C63003A2DE8 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					E131378628CFA0BC00754132 = {
 						CreatedOnToolsVersion = 13.4.1;
 						LastSwiftMigration = 1340;
@@ -227,6 +279,7 @@
 			targets = (
 				E181BAD528CF914300CD25A6 /* weedra1n */,
 				E131378628CFA0BC00754132 /* weedra1nHelper */,
+				0AC2F1B8292D5C63003A2DE8 /* bootstrapHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -246,6 +299,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0AC2F1B5292D5C63003A2DE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AC2F1BC292D5C64003A2DE8 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E131378328CFA0BC00754132 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -272,6 +333,50 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0AC2F1BE292D5C64003A2DE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J27CJZ35AZ;
+				DYLIB_INSTALL_NAME_BASE = /usr/local/lib;
+				ENABLE_BITCODE = NO;
+				LD_DYLIB_INSTALL_NAME = /usr/local/lib/bootstrapHelper;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inheritet)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0AC2F1BF292D5C64003A2DE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J27CJZ35AZ;
+				DYLIB_INSTALL_NAME_BASE = /usr/local/lib;
+				ENABLE_BITCODE = NO;
+				LD_DYLIB_INSTALL_NAME = /usr/local/lib/bootstrapHelper;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inheritet)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E131378C28CFA0BC00754132 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -516,6 +621,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0AC2F1BD292D5C64003A2DE8 /* Build configuration list for PBXNativeTarget "bootstrapHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0AC2F1BE292D5C64003A2DE8 /* Debug */,
+				0AC2F1BF292D5C64003A2DE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E131378B28CFA0BC00754132 /* Build configuration list for PBXNativeTarget "weedra1nHelper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -569,6 +683,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E17927D628D247B2009D8F83 /* XCRemoteSwiftPackageReference "SWCompression" */;
 			productName = SWCompression;
+		};
+		0AC2F1C1292D713A003A2DE8 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E131379B28CFB9B100754132 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
 		};
 		E131379C28CFB9B100754132 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -258,11 +258,7 @@ public class Actions: ObservableObject {
     }
     
     func isJailbroken() -> Bool {
-        if FileManager().fileExists(atPath: "/var/jb/.procursus_strapped"){
-            return true
-        } else {
-            return false
-        }
+        return FileManager().fileExists(atPath: "/var/jb/.procursus_strapped")
     }
     
     func downloadUpdate(UseDev: Bool) {

@@ -14,9 +14,15 @@ package:
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme weedra1n -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(WRTMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(WRTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		
 	@set -o pipefail; \
 		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme weedra1nHelper -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(WRTMP) \
 		CODE_SIGNING_ALLOWED=NO DSTROOT=$(WRTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		
+	@set -o pipefail; \
+		xcodebuild -jobs $(shell sysctl -n hw.ncpu) -project 'weedra1n.xcodeproj' -scheme bootstrapHelper -configuration Release -arch arm64 -sdk iphoneos -derivedDataPath $(WRTMP) \
+		CODE_SIGNING_ALLOWED=NO DSTROOT=$(WRTMP)/install ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES=NO
+		
 	@rm -rf Payload
 	@rm -rf $(WR_STAGE_DIR)/
 	@mkdir -p $(WR_STAGE_DIR)/Payload
@@ -30,6 +36,7 @@ package:
 	@mv $(WR_HELPER_PATH) $(WR_STAGE_DIR)/Payload/weedra1n.app/weedra1nHelper
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app/
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app//weedra1nHelper
+	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app//bootstrapHelper
 	
 	@rm -rf $(WR_STAGE_DIR)/Payload/weedra1n.app/_CodeSignature
 

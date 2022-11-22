@@ -189,11 +189,10 @@ struct Strap: ParsableCommand {
                 }
             }
         } else if clean {
-            let documentsPath = "/var/mobile/Documents/weedra1n"
-            do {
-                try FileManager().removeItem(atPath: documentsPath)
-            } catch {
-                NSLog("Removal failed")
+            let docPath = "/var/mobile/Documents/weedra1n/"
+            let updateFiles = ["\(docPath)weedra1n.ipa", "\(docPath)weedra1n.zip"]
+            for file in updateFiles {
+                try? FileManager().removeItem(atPath: updateFiles)
             }
         }
     }
