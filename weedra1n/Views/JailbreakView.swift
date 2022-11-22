@@ -19,7 +19,7 @@ struct JailbreakView: View {
                 }
                     .padding()
                     .foregroundColor(.white)
-                    .background(Color.blue)
+                    .background(Color(red: 0, green: 0.235, blue: 0.49))
                     .cornerRadius(10)
                     .disabled(true)
             } else if !FileManager().fileExists(atPath: "/var/jb/.procursus_strapped") {
