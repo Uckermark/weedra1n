@@ -4,6 +4,7 @@ WRTMP = $(TMPDIR)/pogo
 WR_STAGE_DIR = $(WRTMP)/stage
 WR_APP_DIR 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1n.app
 WR_HELPER_PATH 	= $(WRTMP)/Build/Products/Release-iphoneos/weedra1nHelper
+BS_HELPER_PATH 	= $(WRTMP)/Build/Products/Release-iphoneos/bootstrapHelper
 GIT_REV=$(shell git rev-parse --short HEAD)
 GIT_BRANCH=$(shell git rev-parse --abbrev-ref HEAD)
 
@@ -34,6 +35,7 @@ package:
 	@ls $(WR_HELPER_PATH)
 	@ls $(WR_STAGE_DIR)
 	@mv $(WR_HELPER_PATH) $(WR_STAGE_DIR)/Payload/weedra1n.app/weedra1nHelper
+        @mv $(BS_HELPER_PATH) $(WR_STAGE_DIR)/Payload/weedra1n.app/bootstrapHelper
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app/
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app//weedra1nHelper
 	@$(TARGET_CODESIGN) -Sentitlements.xml $(WR_STAGE_DIR)/Payload/weedra1n.app//bootstrapHelper
