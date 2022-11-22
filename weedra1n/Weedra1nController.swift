@@ -265,35 +265,25 @@ public class Actions: ObservableObject {
         }
     }
     
-    func installUpdate() {
-        addToLog(msg: "Installing update")
-    }
-    
     func downloadUpdate(UseDev: Bool) {
-        isWorking = true
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
             NSLog("[weedra1n] Could not find helper?")
             addToLog(msg: "Could not find helper")
-            isWorking = false
             return
         }
         addToLog(msg: "Downloading update")
         DispatchQueue.global(qos: .utility).async {
             let dArgs: [String]
-            if UseDev {
-                dArgs = ["-u", "--dev"]
-            } else {
-                dArgs = ["-u"]
-            }
+            if UseDev { dArgs = ["-u", "--dev"] } else { dArgs = ["-u"] }
             let ret = spawn(command: helper, args: dArgs, root: true)
             DispatchQueue.main.async {
                 self.vLog(msg: ret.1)
+                self.addToLog(msg: "Extracting archive")
                 DispatchQueue.global(qos: .utility).async {
                     let ret = spawn(command: helper, args: ["-e"], root: true)
                     DispatchQueue.main.async {
                         self.vLog(msg: ret.1)
                         self.addToLog(msg: "Finished Downloading. You can now install in the Settings tab")
-                        self.isWorking = false
                     }
                 }
             }
