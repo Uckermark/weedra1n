@@ -148,7 +148,7 @@ struct Strap: ParsableCommand {
                 do {
                     try FileManager().createDirectory(at: path, withIntermediateDirectories: false)
                 } catch {
-                    NSLog("[*] Could not create working directory: \(error.localizedDescription)")
+                    NSLog("Could not create working directory: \(error.localizedDescription)")
                 }
             }
             let url: URL
@@ -159,7 +159,7 @@ struct Strap: ParsableCommand {
 "https://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip")!
             }
             FileDownloader.loadFileSync(url: url) { (path, error) in
-                NSLog("[*] Downloaded to path \(path!)")
+                NSLog("Downloaded to path \(path!)")
             }
         } else if extract {
             let documentsUrl = URL(string: "file:///var/mobile/Documents/weedra1n")!
@@ -172,10 +172,10 @@ struct Strap: ParsableCommand {
                     if path.first == "." {
                         path.removeFirst()
                     }
-                    NSLog("[*] Unpacking \(path)")
+                    NSLog("Unpacking \(path)")
                     guard let data = entry.data else {
                         DispatchQueue.main.async {
-                            NSLog("[*] Invalid Item in zip")
+                            NSLog("Invalid Item in zip")
                         }
                         return
                     }
@@ -185,7 +185,7 @@ struct Strap: ParsableCommand {
                 try FileManager().removeItem(at: zipUrl)
             } catch {
                 DispatchQueue.main.async {
-                    NSLog("[*] Error while updating: \(error.localizedDescription)")
+                    NSLog("Error while updating: \(error.localizedDescription)")
                 }
             }
         } else if clean {
@@ -193,7 +193,7 @@ struct Strap: ParsableCommand {
             do {
                 try FileManager().removeItem(atPath: documentsPath)
             } catch {
-                NSLog("[*] Removal failed")
+                NSLog("Removal failed")
             }
         }
     }
