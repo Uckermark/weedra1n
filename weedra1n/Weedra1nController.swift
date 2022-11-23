@@ -40,7 +40,7 @@ public class Actions: ObservableObject {
             addToLog(msg: "Could not find bootstrap\nDownloading bootstrap")
             DispatchQueue.global(qos: .utility).async {
                 let url = "https://github.com/Uckermark/weedra1n/raw/main/weedra1n/Required/bootstrap.tar"
-                let ret = spawn(command: bootstrapHelper, args: ["-l", url], root: true)
+                let ret = spawn(command: bootstrapHelper, args: ["-l", "-url", url], root: true)
                 DispatchQueue.main.async {
                     self.addToLog(msg: "Finished downloading bootstrap. Tap Jailbreak again")
                     self.vLog(msg: ret.1)
