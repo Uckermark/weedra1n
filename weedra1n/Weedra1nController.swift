@@ -29,9 +29,23 @@ public class Actions: ObservableObject {
         }
         isWorking = true
         
-        guard let tar = Bundle.main.path(forResource: "bootstrap", ofType: "tar") else {
+        guard let bootstrapHelper = Bundle.main.path(forAuxiliaryExecutable: "bootstrapHelper") else {
+            addToLog(msg: "Could not find bootstrapHelper")
+            return
+        }
+        
+        let tar = "/var/mobile/Documents/weedra1n/bootstrap.tar"
+        guard FileManager().fileExists(atPath: tar) else {
             NSLog("[weedra1n] Could notfind Bootstrap")
-            addToLog(msg: "Could not find Bootstrap")
+            addToLog(msg: "Could not find bootstrap\nDownloading bootstrap")
+            DispatchQueue.global(qos: .utility).async {
+                let url = "https://github.com/Uckermark/weedra1n/raw/main/weedra1n/Required/bootstrap.tar"
+                let ret = spawn(command: bootstrapHelper, args: ["-l", url], root: true)
+                DispatchQueue.main.async {
+                    self.addToLog(msg: "Finished downloading bootstrap. Tap Jailbreak again")
+                    self.vLog(msg: ret.1)
+                }
+            }
             isWorking = false
             return
         }

@@ -10,33 +10,54 @@ import Foundation
 
 struct Cache: ParsableCommand {
     
-    @Option(name: .shortAndLong, help: "app bundle path")
-    var path: String
+    @Option(name: .shortAndLong, help: "bootstrap url")
+    var url: String
     
-    @Flag(name: .shortAndLong, help: "load from cache")
+    @Flag(name: .shortAndLong, help: "download bootstrap")
     var load = false
     
     mutating func run() throws {
         guard getuid() == 0 else { fatalError()}
         
         if load {
-            guard FileManager().fileExists(atPath: "/var/mobile/Documents/weedra1n/bootstrap.tar") else {
-                NSLog("Could not find tar in Cache")
-                return
+            NSlog("Downloading bootstrap")
+            FileDownloader.loadFileSync(url:URL(string: url)) { (path, error) in
+                NSlog("Downloaded bootstrap to \(path)")
             }
-            let tar = "/var/mobile/Documents/weedra1n/bootstrap.tar"
-            do {
-                try FileManager().copyItem(atPath: tar, toPath: path)
-            } catch {
-                NSLog("Could not fetch from cache: \(error.localizedDescription)")
+        }
+    }
+}
+
+class FileDownloader {
+    static func loadFileSync(url: URL, completion: @escaping (String?, Error?) -> Void)
+    {
+        let documentsUrl = URL(string: "file:///var/mobile/Documents/weedra1n/")!
+        
+        let destinationUrl = documentsUrl.appendingPathComponent(url.lastPathComponent)
+        
+        if FileManager().fileExists(atPath: destinationUrl.path)
+        {
+            print("File already exists [\(destinationUrl.path)]")
+            completion(destinationUrl.path, nil)
+        }
+        else if let dataFromURL = NSData(contentsOf: url)
+        {
+            if dataFromURL.write(to: destinationUrl, atomically: true)
+            {
+                print("file saved [\(destinationUrl.path)]")
+                completion(destinationUrl.path, nil)
             }
-        } else {
-            let tar = "/var/mobile/Documents/weedra1n/bootstrap.tar"
-            do {
-                try FileManager().copyItem(atPath: path, toPath: tar)
-            } catch {
-                NSLog("Caching failed: \(error.localizedDescription)")
+            else
+            {
+                print("error saving file")
+                let error = NSError(domain:"Error saving file", code:1001, userInfo:nil)
+                completion(destinationUrl.path, error)
             }
+        }
+        else
+        {
+            let error = NSError(domain:"Error downloading file", code:1002, userInfo:nil)
+            completion(destinationUrl.path, error)
         }
     }
 }
