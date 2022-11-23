@@ -34,7 +34,7 @@ public class Actions: ObservableObject {
         }
         
         let tar = "/var/mobile/Documents/weedra1n/bootstrap.tar"
-        guard FileManager().fileExists(atPath: tar) else {
+        if !FileManager().fileExists(atPath: tar) {
             NSLog("[weedra1n] Could notfind Bootstrap")
             addToLog(msg: "Could not find bootstrap")
             addToLog(msg: "Downloading bootstrap. This may take a while...")
@@ -44,9 +44,9 @@ public class Actions: ObservableObject {
                     self.addToLog(msg: "Finished downloading bootstrap. Tap Jailbreak again")
                     self.vLog(msg: ret.1)
                 }
+                self.isWorking = false
+                return
             }
-            isWorking = false
-            return
         }
          
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {

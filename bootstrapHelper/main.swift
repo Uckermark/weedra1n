@@ -17,7 +17,7 @@ struct Cache: ParsableCommand {
         guard getuid() == 0 else { fatalError()}
         
         if load {
-            let url = URL(string: "https://github.com/Uckermark/weedra1n/raw/main/weedra1n/Required/bootstrap.tar")!
+            let url = URL(string: "https://nightly.link/Uckermark/weedra1n/workflows/devbuild/helper/bootstrap.zip")!
             NSLog("Downloading bootstrap")
             loadFileSync(url: url) { (path, error) in
                 NSLog("Downloaded bootstrap to \(path)")
