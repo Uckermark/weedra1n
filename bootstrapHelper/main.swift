@@ -21,8 +21,8 @@ struct Cache: ParsableCommand {
         
         if load {
             NSLog("Downloading bootstrap")
-            FileDownloader.loadFileSync(url:URL(string: url)) { (path, error) in
-                NSLog("Downloaded bootstrap to \(path)
+            FileDownloader.loadFileSync(url:URL(string: url)!) { (path, error) in
+                NSLog("Downloaded bootstrap to \(path)")
             }
         }
     }
