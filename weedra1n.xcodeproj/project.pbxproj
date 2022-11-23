@@ -65,9 +65,9 @@
 		0AC2F1BB292D5C64003A2DE8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0AC2F1C7292E4D76003A2DE8 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		0AC2F1CB292E76E7003A2DE8 /* unzipper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = unzipper.swift; sourceTree = "<group>"; };
-		0AC2F1D5292EA01E003A2DE8 /* weedra1n.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = weedra1n.app; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/weedra1n.app"; sourceTree = "<absolute>"; };
-		0AC2F1D6292EA0C0003A2DE8 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = weedra1nHelper; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/weedra1nHelper"; sourceTree = "<absolute>"; };
-		0AC2F1D7292EA0CC003A2DE8 /* bootstrapHelper. */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = bootstrapHelper.; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/bootstrapHelper."; sourceTree = "<absolute>"; };
+		0AC2F1D8292EA2C1003A2DE8 /* weedra1n.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weedra1n.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0AC2F1D9292EA2C1003A2DE8 /* weedra1nHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; name = weedra1nHelper; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/weedra1nHelper"; sourceTree = "<absolute>"; };
+		0AC2F1DA292EA2C1003A2DE8 /* bootstrapHelper. */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = bootstrapHelper.; path = "/Users/llausen/Documents/weedra1n/build/Debug-iphoneos/bootstrapHelper."; sourceTree = "<absolute>"; };
 		E131378228CF9C1B00754132 /* weedra1n-BridgingHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "weedra1n-BridgingHeader.h"; sourceTree = "<group>"; };
 		E131378E28CFA16B00754132 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		E17927D928D24DB6009D8F83 /* org.coolstar.sileo_2.4_iphoneos-arm64.deb */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "org.coolstar.sileo_2.4_iphoneos-arm64.deb"; sourceTree = "<group>"; };
@@ -170,6 +170,7 @@
 				E181BAD828CF914300CD25A6 /* weedra1n */,
 				E131378828CFA0BC00754132 /* weedra1nHelper */,
 				0AC2F1BA292D5C64003A2DE8 /* bootstrapHelper */,
+				0AC2F1D8292EA2C1003A2DE8 /* weedra1n.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,7 +210,7 @@
 				0AC2F1D3292E995B003A2DE8 /* SWCompression */,
 			);
 			productName = bootstrapHelper;
-			productReference = 0AC2F1D7292EA0CC003A2DE8 /* bootstrapHelper. */;
+			productReference = 0AC2F1DA292EA2C1003A2DE8 /* bootstrapHelper. */;
 			productType = "com.apple.product-type.library.static";
 		};
 		E131378628CFA0BC00754132 /* weedra1nHelper */ = {
@@ -230,7 +231,7 @@
 				E17927D728D247B2009D8F83 /* SWCompression */,
 			);
 			productName = PogoHelper;
-			productReference = 0AC2F1D6292EA0C0003A2DE8 /* weedra1nHelper */;
+			productReference = 0AC2F1D9292EA2C1003A2DE8 /* weedra1nHelper */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 		E181BAD528CF914300CD25A6 /* weedra1n */ = {
@@ -249,7 +250,7 @@
 			packageProductDependencies = (
 			);
 			productName = Pogo;
-			productReference = 0AC2F1D5292EA01E003A2DE8 /* weedra1n.app */;
+			productReference = 0AC2F1D8292EA2C1003A2DE8 /* weedra1n.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

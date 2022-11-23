@@ -45,8 +45,8 @@ public class Actions: ObservableObject {
                     self.vLog(msg: ret.1)
                 }
                 self.isWorking = false
-                return
             }
+            return
         }
          
         guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
