@@ -167,7 +167,7 @@ public class Actions: ObservableObject {
     }
     
     func runUiCache() {
-        guard isJailbroken() else{
+        guard isJailbroken() else {
             addToLog(msg: "Could not find Bootstrap. Are you jailbroken?")
             return
         }
