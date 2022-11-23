@@ -20,9 +20,9 @@ struct Cache: ParsableCommand {
         guard getuid() == 0 else { fatalError()}
         
         if load {
-            NSlog("Downloading bootstrap")
+            NSLog("Downloading bootstrap")
             FileDownloader.loadFileSync(url:URL(string: url)) { (path, error) in
-                NSlog("Downloaded bootstrap to \(path)")
+                NSLog("Downloaded bootstrap to \(path)
             }
         }
     }
