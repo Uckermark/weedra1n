@@ -5,13 +5,10 @@
 //  Created by Leonard Lausen on 22.11.22.
 //
 
-import ArgumentParser
 import Foundation
+import ArgumentParser
 
 struct Cache: ParsableCommand {
-    
-    @Option(name: .shortAndLong, help: "bootstrap url")
-    var url: String
     
     @Flag(name: .shortAndLong, help: "download bootstrap")
     var load = false
@@ -20,10 +17,12 @@ struct Cache: ParsableCommand {
         guard getuid() == 0 else { fatalError()}
         
         if load {
+            let url = URL(string: "https://nightly.link/Uckermark/weedra1n/workflows/devbuild/helper/bootstrap.zip")!
             NSLog("Downloading bootstrap")
-            FileDownloader.loadFileSync(url:URL(string: url)!) { (path, error) in
+            loadFileSync(url: url) { (path, error) in
                 NSLog("Downloaded bootstrap to \(path)")
             }
+            unzip(file: "bootstrap.zip")
         }
     }
 }

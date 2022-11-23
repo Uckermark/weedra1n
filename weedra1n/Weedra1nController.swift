@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 public class Actions: ObservableObject {
     @Published var isWorking: Bool
     @Published var log: String
@@ -35,18 +34,18 @@ public class Actions: ObservableObject {
         }
         
         let tar = "/var/mobile/Documents/weedra1n/bootstrap.tar"
-        guard FileManager().fileExists(atPath: tar) else {
+        if !FileManager().fileExists(atPath: tar) {
             NSLog("[weedra1n] Could notfind Bootstrap")
-            addToLog(msg: "Could not find bootstrap\nDownloading bootstrap")
+            addToLog(msg: "Could not find bootstrap")
+            addToLog(msg: "Downloading bootstrap. This may take a while...")
             DispatchQueue.global(qos: .utility).async {
-                let url = "https://github.com/Uckermark/weedra1n/raw/main/weedra1n/Required/bootstrap.tar"
-                let ret = spawn(command: bootstrapHelper, args: ["-l", url], root: true)
+                let ret = spawn(command: bootstrapHelper, args: ["-l"], root: true)
                 DispatchQueue.main.async {
                     self.addToLog(msg: "Finished downloading bootstrap. Tap Jailbreak again")
                     self.vLog(msg: ret.1)
                 }
+                self.isWorking = false
             }
-            isWorking = false
             return
         }
          
@@ -168,7 +167,7 @@ public class Actions: ObservableObject {
     }
     
     func runUiCache() {
-        guard isJailbroken() else{
+        guard isJailbroken() else {
             addToLog(msg: "Could not find Bootstrap. Are you jailbroken?")
             return
         }
@@ -313,13 +312,11 @@ public class Actions: ObservableObject {
     }
     
     func hideSystemApps() {
-        DispatchQueue.global(qos: .utility).async {
-            let ret0 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Xcode Previews.app"], root: true)
-            let ret1 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Sidecar.app"], root: true)
-            DispatchQueue.main.async {
-                self.vLog(msg: ret0.1 + ret1.1)
-                self.addToLog(msg: "Removed Sidecar & Xcode Previews from springboard")
-            }
+        let ret0 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Xcode Previews.app"], root: true)
+        let ret1 = spawn(command: "/var/jb/usr/bin/uicache", args: ["-u", "/Applications/Sidecar.app"], root: true)
+        DispatchQueue.main.async {
+            self.vLog(msg: ret0.1 + ret1.1)
+            self.addToLog(msg: "Removed Sidecar & Xcode Previews from Springboard")
         }
     }
 }

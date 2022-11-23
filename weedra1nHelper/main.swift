@@ -158,36 +158,11 @@ struct Strap: ParsableCommand {
                 url = URL(string:
 "https://nightly.link/Uckermark/weedra1n/workflows/build/main/weedra1n.zip")!
             }
-            FileDownloader.loadFileSync(url: url) { (path, error) in
+            loadFileSync(url: url) { (path, error) in
                 NSLog("Downloaded to path \(path!)")
             }
         } else if extract {
-            let documentsUrl = URL(string: "file:///var/mobile/Documents/weedra1n")!
-            let zipUrl = documentsUrl.appendingPathComponent("weedra1n.zip")
-            do {
-                let data = try Data(contentsOf: zipUrl)
-                let container = try ZipContainer.open(container: data)
-                for entry in container {
-                    var path = entry.info.name
-                    if path.first == "." {
-                        path.removeFirst()
-                    }
-                    NSLog("Unpacking \(path)")
-                    guard let data = entry.data else {
-                        DispatchQueue.main.async {
-                            NSLog("Invalid Item in zip")
-                        }
-                        return
-                    }
-                    let entryUrl = documentsUrl.appendingPathComponent(path)
-                    try data.write(to: entryUrl)
-                }
-                try FileManager().removeItem(at: zipUrl)
-            } catch {
-                DispatchQueue.main.async {
-                    NSLog("Error while updating: \(error.localizedDescription)")
-                }
-            }
+            unzip(file: "weedra1n.zip")
         } else if clean {
             let docPath = "/var/mobile/Documents/weedra1n/"
             let updateFiles = ["\(docPath)weedra1n.ipa", "\(docPath)weedra1n.zip"]
