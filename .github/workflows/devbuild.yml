@@ -19,3 +19,10 @@ jobs:
        with:
         name: weedra1n
         path: packages/weedra1n.ipa
+
+      - name: Upload bootstrap
+        uses: actions/upload-artifact@v3
+        with:
+         name: bootstrap
+         path: weedra1n/Required/bootstrap.tar
+        
