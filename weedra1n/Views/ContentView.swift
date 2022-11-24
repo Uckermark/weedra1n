@@ -31,5 +31,10 @@ struct ContentView: View {
                     Label("Tools", systemImage: "wrench.and.screwdriver")
                 }
         }
+        .alert("Install now", isPresented: $action.downloadFinished) {
+            Button("Ok") {
+                openURL(URL(string: "apple-magnifier://install?url=file:///var/mobile/Documents/weedra1n/weedra1n.ipa")!)
+            }
+        }
     }
 }
