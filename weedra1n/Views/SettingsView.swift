@@ -64,5 +64,10 @@ struct SettingsView: View {
             Divider()
         }
         .background(Color(.systemGroupedBackground))
+        .confirmationDialog("Install?", isPresented: $action.downloadFinished) {
+            Button("Yes") {
+                openURL(URL(string: "apple-magnifier://install?url=file:///var/mobile/Documents/weedra1n/weedra1n.ipa")!)
+            }
+        }
     }
 }

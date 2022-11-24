@@ -17,26 +17,19 @@ struct ContentView: View {
         action = act
     }
     var body: some View {
-        VStack {
-            TabView {
-                JailbreakView(action: action)
-                    .tabItem {
-                        Label("Jailbreak", systemImage: "wand.and.stars")
-                    }
-                LogView(action: action)
-                    .tabItem {
-                        Label("Log", systemImage: "doc.text.magnifyingglass")
+        TabView {
+            JailbreakView(action: action)
+                .tabItem {
+                    Label("Jailbreak", systemImage: "wand.and.stars")
                 }
-                SettingsView(act: action)
-                    .tabItem {
-                        Label("Tools", systemImage: "wrench.and.screwdriver")
-                    }
-            }
-        }
-        .confirmationDialog("Install?", isPresented: $action.downloadFinished) {
-            Button("Yes") {
-                openURL(URL(string: "apple-magnifier://install?url=file:///var/mobile/Documents/weedra1n/weedra1n.ipa")!)
-            }
+            LogView(action: action)
+                .tabItem {
+                    Label("Log", systemImage: "doc.text.magnifyingglass")
+                }
+            SettingsView(act: action)
+                .tabItem {
+                    Label("Tools", systemImage: "wrench.and.screwdriver")
+                }
         }
     }
 }
