@@ -177,7 +177,7 @@ public class Actions: ObservableObject {
             if app.hasSuffix(".app") {
                 let ret = spawn(command: "/var/jb/usr/bin/uicache", args: ["-p", "/var/jb/Applications/\(app)"], root: true)
                 self.vLog(msg: ret.1)
-                self.addToLog(msg: "App \(app) refreshed")
+                self.addToLog(msg: "\(app) refreshed")
                 if ret.0 != 0 {
                     self.addToLog(msg: "Failed to rebuild IconCache (\(ret))")
                     return

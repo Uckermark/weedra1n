@@ -45,7 +45,11 @@ struct SettingsView: View {
                     Toggle("Allow untested updates", isOn: $dev)
                 }
                 Section(header: Text("TOOLS")) {
-                    Button("Rebuild Icon Cache", action: action.runUiCache)
+                    Button("Rebuild Icon Cache") {
+                        DispatchQueue.global(qos: .utility).async {
+                            action.runUiCache()
+                        }
+                    }
                     Button("Remount Preboot", action: action.remountPreboot)
                     Button("Launch Daemons", action: action.launchDaemons)
                     Button("Respring", action: respring)

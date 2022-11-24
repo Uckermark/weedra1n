@@ -31,8 +31,8 @@ struct ContentView: View {
                     Label("Tools", systemImage: "wrench.and.screwdriver")
                 }
         }
-        .alert("Install now", isPresented: $action.downloadFinished) {
-            Button("Ok") {
+        .alert("Installing through TrollStore", isPresented: $action.downloadFinished) {
+            Button("OK", role: .cancel) {
                 openURL(URL(string: "apple-magnifier://install?url=file:///var/mobile/Documents/weedra1n/weedra1n.ipa")!)
             }
         }
