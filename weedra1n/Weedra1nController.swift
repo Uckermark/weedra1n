@@ -49,13 +49,6 @@ public class Actions: ObservableObject {
             return
         }
          
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
-            NSLog("[weedra1n] Could not find helper?")
-            addToLog(msg: "Could not find helper")
-            isWorking = false
-            return
-        }
-         
         guard let deb = Bundle.main.path(forResource: "org.coolstar.sileo_2.4_iphoneos-arm64", ofType: ".deb") else {
             NSLog("[weedra1n] Could not find deb")
             addToLog(msg: "Could not find Sileo deb")
@@ -66,7 +59,7 @@ public class Actions: ObservableObject {
         addToLog(msg: "Installing Bootstrap")
         DispatchQueue.global(qos: .utility).async { [self] in
             let ret1 = spawn(command: "/sbin/mount", args: ["-uw", "/private/preboot"], root: true).1
-            let ret = spawn(command: helper, args: ["-i", tar], root: true)
+            let ret = spawn(command: bootstrapHelper, args: ["-i", tar], root: true)
             DispatchQueue.main.async {
                 self.vLog(msg: ret1)
                 if ret.0 != 0 {
@@ -127,7 +120,7 @@ public class Actions: ObservableObject {
             return
         }
         isWorking = true
-        guard let helper = Bundle.main.path(forAuxiliaryExecutable: "weedra1nHelper") else {
+        guard let bootstrapHelper = Bundle.main.path(forAuxiliaryExecutable: "bootstrapHelper") else {
             NSLog("[weedra1n] Could not find helper?")
             self.addToLog(msg: "Could not find helper")
             self.isWorking = false
@@ -152,7 +145,7 @@ public class Actions: ObservableObject {
                 }
             }
             self.addToLog(msg: "Removing Strap")
-            let ret = spawn(command: helper, args: ["-r"], root: true)
+            let ret = spawn(command: bootstrapHelper, args: ["-r"], root: true)
             DispatchQueue.main.async { [self] in
                 self.vLog(msg: ret.1)
                 if ret.0 != 0 {
