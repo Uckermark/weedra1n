@@ -2,7 +2,7 @@ name: devbuild
 
 on:
   push:
-    branches: [ "helper" ]
+    branches: [ "dev" ]
     
 jobs:
   build:
