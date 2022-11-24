@@ -13,12 +13,14 @@ public class Actions: ObservableObject {
     @Published var log: String
     @Published var status: String
     @Published var verbose: Bool
+    @Published var downloadFinished: Bool
 
     init() {
         isWorking = false
         log = ""
         status = "\n"
         verbose = false
+        downloadFinished = false
     }
     
     func Install() {
@@ -285,6 +287,7 @@ public class Actions: ObservableObject {
                     let ret = spawn(command: helper, args: ["-e"], root: true)
                     DispatchQueue.main.async {
                         self.vLog(msg: ret.1)
+                        self.downloadFinished = true
                         self.addToLog(msg: "Finished Downloading. You can now install in the Settings tab")
                     }
                 }
